@@ -1,0 +1,64 @@
+<DOCTYPE! html>
+
+    <body>
+    <header>
+        <h2>GAMEFIED CLASSROOM</h2>
+    </header>
+    <section>
+      <nav>
+        <ul>
+          <li><a href="#">É</a></li>
+          <li><a href="#">SOBRE</a></li>
+          <li><a href="#">ISSO</a></li>
+        </ul>
+      </nav>
+      <article>
+        <h1></h1>
+        <p>É sobre isso</p>
+      </article>
+    </section>
+    <footer>
+      <p>E tá tudo bem</p>
+    </footer>
+</body>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  header {
+    background-color: lightblue;
+    text-align: center;
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+  }
+  nav {
+    float: left;
+    width: 30%;
+    height: 300px;
+    background: #fff;
+    padding: 20px;
+  }
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  article {
+    float: left;
+    padding: 20px;
+    width: 70%;
+    background-color: #f1f1f1;
+    height: 300px; 
+  }
+  footer {
+    background-color: lightblue;
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+</style>
