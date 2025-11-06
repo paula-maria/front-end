@@ -4,70 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Cadastro</title>
+
   <style>
+    :root {
+      --fundo: #f2f8ff;
+      --texto: #222;
+      --caixa: #fff;
+      --borda: #ccc;
+      --botao: #4e9ef7;
+      --botao-hover: #2b7de9;
+    }
+
+    body.dark {
+      --fundo: #121212;
+      --texto: #f1f1f1;
+      --caixa: #1e1e1e;
+      --borda: #444;
+      --botao: #4e9ef7;
+      --botao-hover: #82b4ff;
+    }
+
     * {
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
     }
 
     body {
       margin: 0;
-      background: #f2f8ff;
-      color: #333;
+      background: var(--fundo);
+      color: var(--texto);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       min-height: 100vh;
       padding: 20px;
     }
 
     header {
-      background-color: lightblue;
-      border-style: outset;
+      background-color: var(--botao);
+      color: white;
       text-align: center;
-      padding: 10px;
-      font-size: 25px;
+      padding: 15px;
+      border-radius: 8px;
       width: 100%;
       max-width: 700px;
-      border-radius: 8px;
       margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    #themeToggle {
+      background: transparent;
+      border: 2px solid white;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    #themeToggle:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     form, nav {
-      background: white;
+      background: var(--caixa);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 700px;
       margin-bottom: 20px;
+      border: 1px solid var(--borda);
     }
 
     input, textarea {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
-      border: 1px solid #ccc;
+      border: 1px solid var(--borda);
       border-radius: 6px;
       font-size: 16px;
+      background: var(--caixa);
+      color: var(--texto);
     }
 
     input[type="submit"], button {
-      background-color: lightblue;
-      color: #000;
-      cursor: pointer;
-      border-radius: 6px;
+      background-color: var(--botao);
+      color: #fff;
       border: none;
+      border-radius: 6px;
       padding: 10px 16px;
       font-weight: bold;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
     input[type="submit"]:hover, button:hover {
-      background-color: #4a90e2;
-      color: white;
-      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+      background-color: var(--botao-hover);
     }
 
     textarea {
@@ -76,11 +119,9 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        font-size: 20px;
-        padding: 8px;
+      header h1 {
+        font-size: 18px;
       }
-
       input, textarea, button {
         font-size: 14px;
       }
@@ -90,7 +131,8 @@
 <body>
 
   <header>
-    <h1>FORMULÁRIO DE CADASTRO</h1> 
+    <h1>FORMULÁRIO DE CADASTRO</h1>
+    <button id="themeToggle" title="Alternar tema">🌙</button>
   </header>  
 
   <section id="login">
@@ -124,31 +166,26 @@
   </nav>
 
   <script>
-    // JS para responsividade e interatividade
+    const themeButton = document.getElementById("themeToggle");
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // Ajusta automaticamente o tamanho do texto no header
-    function ajustarTamanhoHeader() {
-      const header = document.querySelector("header h1");
-      if (window.innerWidth < 500) {
-        header.style.fontSize = "20px";
-      } else if (window.innerWidth < 800) {
-        header.style.fontSize = "24px";
-      } else {
-        header.style.fontSize = "28px";
-      }
+    // Define tema inicial baseado no sistema
+    if (prefersDarkScheme.matches) {
+      document.body.classList.add("dark");
+      themeButton.textContent = "☀️";
     }
 
-    // Chama ao carregar e ao redimensionar
-    window.addEventListener("load", ajustarTamanhoHeader);
-    window.addEventListener("resize", ajustarTamanhoHeader);
+    // Alterna entre temas manualmente
+    themeButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      themeButton.textContent = isDark ? "☀️" : "🌙";
+    });
 
-    // Exemplo de interatividade: botão de cadastro
+    // Exemplo de interatividade
     document.getElementById("cadastroBtn").addEventListener("click", () => {
       alert("Redirecionando para a página de cadastro...");
-      // Aqui você poderia redirecionar, por exemplo:
-      // window.location.href = "/cadastro";
     });
   </script>
-
 </body>
 </html>
