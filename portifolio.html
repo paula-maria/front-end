@@ -1,191 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portfolio</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-
-    <body>
-        <!-- header starts here -->
-        <header>
-            <div class="header-container">
-                <!-- a wrapper for our logo -->
-                <div class="logo-wrapper">
-                    <div class="logo-image-wrapper">
-                        <img
-                            src="https://d4.alternativeto.net/0-hri_WCH1icsgL8PEE182XiP4x-zzUMGbNu5WkPVuk/rs:fit:1200:1200:0/g:ce:0:0/YWJzOi8vZGlzdC9zL3Byb2dyYW1pei1jb21fNTQ4MDU2X2Z1bGwuanBn.jpg"
-                        />
-                    </div>
-                    <a class="logo-text" href="#">Paula Maria</a>
-                </div>
-                <label class="hamburger-menu" for="menu-button">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </label>
-
-                <!-- apply styles for mobile menu based on whether checkbox is checked or not -->
-                <input type="checkbox" id="menu-button" />
-
-                <!-- navigation links for different sections -->
-                <nav class="main-navbar">
-                    <ul>
-                        <li><a href="#home-section">HOME</a></li>
-                        <li><a href="#about-section">ABOUT</a></li>
-                        <li><a href="#experience-section">EXPERIENCE</a></li>
-                        <li><a href="#project-section">PROJECT</a></li>
-                        <li><a href="#contact-section">CONTACT</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-    </body>
-</html>
- <style> 
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Cadastro</title>
+  <style>
     * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-/* reset the browser styles */
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      background: #f2f8ff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-body {
-    font-family: Nunito, sans-serif;
-    position: relative;
-}
+    header {
+      background-color: lightblue;
+      border-style: outset;
+      text-align: center;
+      padding: 10px;
+      font-size: 25px;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
-/* styles for the header */
-header {
-    width: 100%;
-    height: 80px;
-    background-color: #150f41;
+    form, nav {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
 
-    /* make header fixed */
-    position: fixed;
-    top: 0;
-    left: 0;
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
 
-    z-index: 3;
+    input[type="submit"], button {
+      background-color: lightblue;
+      color: #000;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      padding: 10px 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
 
-    /* padding top/bottom set to 0, and left/right to 40px */
-    padding: 0px 40px;
-}
+    input[type="submit"]:hover, button:hover {
+      background-color: #4a90e2;
+      color: white;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    }
 
-/* styles for header container */
-header .header-container {
-    background-color: #150f41;
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
 
-    /* arrange every immediate child horizontally */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @media (max-width: 600px) {
+      header {
+        font-size: 20px;
+        padding: 8px;
+      }
 
-    /* set the max-width */
-    max-width: 1172px;
-    margin: 0 auto;
-    padding: 0px 80px;
-}
+      input, textarea, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
 
-/* styles for logo wrapper */
-.logo-wrapper {
-    width: auto;
-    height: 80px;
-    line-height: 80px;
-}
+  <header>
+    <h1>FORMULÁRIO DE CADASTRO</h1> 
+  </header>  
 
-.logo-image-wrapper {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    /* takes space as required only */
-    display: inline-block;
-    margin-right: 8px;
+  <section id="login">
+    <h2>LOGIN</h2>
+    <form action="/submit" method="post">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="password" name="password" placeholder="Senha" required>
+      <input type="submit" value="Entrar">
+    </form>
+  </section>
 
-    /* align the logo vertically center within the parent height */
-    vertical-align: middle;
-}
+  <nav id="cadastro">
+    <h3>Se não possui conta, cadastre-se agora!</h3> 
+    <button id="cadastroBtn">Clique aqui para prosseguir!</button> 
+    <hr><br>
 
-/* styles the logo image */
-.logo-image-wrapper img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
+    <p>Seu nome completo:</p>
+    <input type="text" name="nomeCompleto" placeholder="Digite aqui">
 
-/* styles the logo text */
-.logo-wrapper .logo-text {
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-}
+    <p>Sua data de nascimento:</p>
+    <input type="date" name="nascimento">
 
-/* styles the list containing navigation link */
-header .main-navbar ul {
-    /* arrange all links horizontally */
-    display: flex;
+    <p>Seu CPF:</p>
+    <input type="text" name="cpf" placeholder="Digite aqui">
 
-    /* sets 20px space between flex items (list items) */
-    gap: 20px;
+    <p>Sua matrícula:</p>
+    <input type="text" name="matricula" placeholder="Digite aqui">
 
-    /* hides the list marker */
-    list-style: none;
-}
+    <h4>Sugestões para melhorar nosso sistema:</h4>    
+    <textarea placeholder="Escreva aqui..."></textarea>
+  </nav>
 
-/* styles the links */
-.main-navbar a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-}
+  <script>
+    // JS para responsividade e interatividade
 
-/* style link on mouse over */
-.main-navbar a:hover {
-    color: #ff4d71;
-}
+    // Ajusta automaticamente o tamanho do texto no header
+    function ajustarTamanhoHeader() {
+      const header = document.querySelector("header h1");
+      if (window.innerWidth < 500) {
+        header.style.fontSize = "20px";
+      } else if (window.innerWidth < 800) {
+        header.style.fontSize = "24px";
+      } else {
+        header.style.fontSize = "28px";
+      }
+    }
 
-/* styles for hamburger menu */
-.hamburger-menu {
-    /* initially hide the menu for larger devices */
-    display: none;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    // Chama ao carregar e ao redimensionar
+    window.addEventListener("load", ajustarTamanhoHeader);
+    window.addEventListener("resize", ajustarTamanhoHeader);
 
-    /* precisely arrange hamburger menu within navigation bar */
-    position: absolute;
-    right: 20px;
-    top: 30px;
-}
+    // Exemplo de interatividade: botão de cadastro
+    document.getElementById("cadastroBtn").addEventListener("click", () => {
+      alert("Redirecionando para a página de cadastro...");
+      // Aqui você poderia redirecionar, por exemplo:
+      // window.location.href = "/cadastro";
+    });
+  </script>
 
-/* styles for each bar of menu */
-.hamburger-menu .bar {
-    width: 20px;
-    height: 3px;
-    display: block;
-    margin-bottom: 4px;
-    background-color: white;
-}
-
-.hamburger-menu:hover .bar {
-    background-color: #ff4d71;
-}
-
-/* hide the checkbox, used for only to set style based on checkbox state */
-header input {
-    display: none;
-}
- </style>
+</body>
+</html>
